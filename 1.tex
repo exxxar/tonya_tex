@@ -1,0 +1,348 @@
+\documentclass[12pt]{article}
+\usepackage[intlimits]{amsmath}\usepackage{amssymb}\usepackage{amsthm}
+%\usepackage{amscd}\usepackage{mathrsfs}
+
+
+\usepackage[T2A]{fontenc}\usepackage[cp1251]{inputenc}\usepackage[russianb]{babel}
+%%\usepackage{mathtext}         % если нужны русские буквы в формулах (не обязательно)
+%%\usepackage[T2A]{fontenc}     % внутренняя T2A кодировка TeX
+%%\usepackage[cp1251]{inputenc} % кодировка - можно использовать [cp866] [cp1251]
+%%\usepackage[russianb]{babel}   % включение переносов
+\usepackage{srcltx}
+\topmargin = -1.54 cm%3 см сверху
+\textheight = 27cm % высота текста
+\oddsidemargin = -.54cm %2 см слева
+\textwidth = 17.5cm \headheight = 0 mm \headsep = 0 mm
+\pagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem {definition}  {Определение}
+\newtheorem {theorem}     {Теорема}
+\newtheorem {lemma}   {Лемма}
+\newtheorem {corollary}   {Следствие}
+\newtheorem {upr}   {Упражнение}
+\renewenvironment{proof}{\par{\itshape $\square$}}{\hfill$\blacksquare$}
+
+\theoremstyle{remark}
+
+\newtheorem {example}    {Пример}
+\newtheorem {remark}     {Замечание}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+
+02.12.16
+\begin{center}\textbf{Интегрируемость сумм из модулей блоков
+тригонометрических рядов Фурье и другие задачи анализа}
+\end{center}
+
+
+
+Пусть $\{n_j\}$ и $\{v_j\}$ - последовательности строго возрастающих
+натуральных чисел, причем $n_j<v_j$ для всех j. Рассмотрим функцию:
+\begin{equation}\label{f1}U(x):=\sum_{j=1}^{\infty}u_j(x),
+\,\,\,\,\,\,\,\,u_j(x):=\left|\sum_{k=n_j}^{v_j}b_k \sin
+kx\right|,\end{equation} где $b_k\rightarrow 0$ при
+$k\rightarrow\infty$; $\,\,\gamma(m)\searrow 0$ при
+$m\rightarrow\infty$ и выполняется неравенство:
+\begin{equation}\label{f2}\sum_{k=m}^{\infty}|b_k-b_{k+1}|\leq\gamma(m)\,\,\,\text{при всех}\,\,\, m\in\N.\end{equation}
+
+Согласно неравенству (\ref{f2}):
+
+$$|b_m|=\left|\sum_{k=m}^\infty
+(b_k-b_{k+1})\right|\leq\sum_{k=m}^\infty |b_k-b_{k+1}|\leq
+\gamma(m);$$
+
+
+\begin{equation}\label{f3} |b_m|\leq \gamma(m)\end{equation}
+
+\begin{lemma}\label{l1}
+Если числа $b_k$ удовлетворяют следующим условиям: $b_k\rightarrow0$
+при $k\rightarrow\infty$ и неравенству (\ref{f2}), где
+$\gamma(m)\searrow 0$, то при всех $ n,\, v\in \N:n\leq v$
+ справедливо неравенство
+\begin{equation}\label{f4} \left|\sum_{k=n}^{v}b_k \sin
+kx\right|\leq5\gamma(n)\min\left\{\frac{1}{x};v-n+1\right\}\,\,\,\text{при
+всех}\,\,\, x\in (0;\pi].\end{equation}
+
+\end{lemma}
+
+\begin{proof}
+
+
+В силу неравенства треугольника и неравенства (\ref{f3}) следует
+оценка
+
+\begin{equation}\label{f5}\left|\sum_{k=n}^{v}b_k \sin kx\right|\leq\sum_{k=n}^{v}|b_k|\leq
+\gamma(n)(v-n+1).\end{equation}
+
+Теперь докажем следующее неравенство при $x\in(0;\pi]$:
+
+\begin{equation}\label{f6} \left|\sum_{k=n}^{v}b_k \sin
+kx\right|\leq\frac{5}{x}\gamma(n).\end{equation}
+
+Для этого оценим следующее выражение, используя неравенства
+(\ref{f2}) и (\ref{f3}), а также свойство $\gamma(m)$
+(последовательность убывающая к нулю при $m\rightarrow\infty$):
+
+$$\left|2\sin\frac x2 \sum_{k=n}^{v}b_k\sin kx\right|=\left|\sum_{k=n}^{v}b_k\cos (k-\frac12)x-\sum_{k=n}^{v}b_k\cos (k+\frac12)x\right|=$$
+
+$$=\left|b_{n}\cos(n-\frac12)x-\sum_{k=n}^{v-1}(b_k-b_{k+1})\cos (k+\frac12)x-b_{v}\cos(v+\frac12)x\right|\leq$$
+
+$$\leq |b_{n}|+\sum_{k=n}^{\infty}|b_k-b_{k+1}|+|b_{v}|\leq\gamma(n)+\gamma(n)+\gamma(v)\leq3\gamma(n).$$
+
+Значит, $$\left|\sum_{k=n}^{v}b_k\sin
+kx\right|\leq\frac{3\gamma(n)}{2|\sin\frac
+x2|}\leq\frac{3\pi}{2x}\gamma(n)\leq\frac{5}{x}\gamma(n)\,\,\,\,\,\text{при}\,\,x\in(0;\pi].$$
+
+Из полученных оценок (\ref{f5}) и (\ref{f6}) следует, что
+
+$$\left|\sum_{k=n}^{v}b_k\sin
+kx\right|\leq5\gamma(n)\min\left\{\frac{1}{x};v-n+1\right\}\,\,\,\,\,\text{при}\,\,x\in(0;\pi].$$
+
+\end{proof}
+
+\begin{remark}
+Если $b_k$ удовлетворяет условиям леммы \ref{l1} и
+$\gamma(s)=O(\frac1s)$ то для произвольных $n$ и $v$: $n\leq v$
+справедливо следующее неравенство при $x\in(0;\pi]$:
+
+\begin{equation}\label{f7}\left|\sum_{k=n}^{v}b_k \sin
+kx\right|\leq5\gamma(n)\min\left\{\frac{1}{x};m\right\},\,\,\text{где}\,\,\,m=min\left\{v-n+1;
+\frac{C}{\gamma(n)}\right\}.\end{equation}
+
+\end{remark}
+
+\begin{proof}
+Дополнительно необходимо доказать, что
+
+\begin{equation}\label{f8} \left|\sum_{k=n}^{v}b_k \sin
+kx\right|\leq C,\,\,\,\,\text{где} \,\,C=const.\end{equation}
+
+Т.к. $|b_s|\leq \gamma(s)$ и $\gamma(s)=O(\frac1s)$, то существует
+$C_1$ такое, что для любого $s$ выполняется неравенство $s|b_s|\leq
+C_1$. Положим
+
+\begin{equation}\label{f9} \delta_k=\sup_{s\geq k} s|b_s|\leq C_1.\end{equation}
+
+Пусть при некотором $x\in (0;\pi]$ для произвольных целых чисел
+$N=N_x$ выполняется следующее условие:
+
+\begin{equation}\label{f10} \frac{\pi}{N+1}<x\leq\frac{\pi}{N}.\end{equation}
+
+Представим следующий ряд в виде:
+
+$$\sum_{k\geq n}b_k\sin kx=\sum_{n\leq k<n+N}b_k\sin kx+\sum_{k\geq n+N}b_k\sin kx=R+R'.$$
+
+Тогда оценим $|R|$, используя неравенство (\ref{f9}):
+
+\begin{equation}\label{f11}|R|=\left|\sum_{n\leq k<n+N}b_k\sin kx\right|\leq\sum_{n\leq k<n+N}|b_k||\sin kx|\leq\sum_{n\leq k<n+N}|b_k| kx\leq x \delta_n
+N\leq\frac{\pi}{N}\delta_nN=\pi\delta_n\leq \pi C_1.\end{equation}
+
+Представим $R'$ в виде:
+
+$$R'=\sum_{k\geq n+N}b_k\sin kx=\sum_{k\geq n+N}\triangle b_k \frac12 \widetilde{D}_k(x)-b_{n+N}\frac12\widetilde{D}_{n+N-1}(x),\,\,\,\,\,\text{где}\,\,\frac12\widetilde{D}_N(x)=\sum_{k=1}^N \sin kx.$$
+
+Поскольку $\left|\widetilde{D}_N(x)\right|\leq\frac{2\pi}{x}$  при
+$x\in (0;\pi]$ (см. \cite{Edv}), то
+
+ $$|R'|\leq\left|\sum_{k\geq n+N}\triangle b_k \frac12 \widetilde{D}_k(x)\right|+\left|b_{n+N}\right|\left|\frac12\widetilde{D}_{n+N-1}(x)\right|\leq\frac\pi x \left(\sum_{k\geq n+N}|\triangle
+b_k|+|b_{n+N}|\right)$$
+
+Т.к.  для $b_k$ справедливы оценки (\ref{f2}) и (\ref{f3}) , а для
+$x$ оценка - (\ref{f10}), тогда получим
+
+\begin{equation}\label{f12} |R'|\leq 2(n+1)\gamma(n+N)\leq 2(n+N)\gamma(n+N)\leq2C_1.\end{equation}
+
+Объединяя неравенства (\ref{f11}) и (\ref{f12}), получим
+
+$$\left|\sum_{k\geq n}b_k\sin kx\right|\leq |R|+|R'|\leq \pi C_1+2C_1.$$
+
+Следовательно,
+
+$$\left|\sum_{k= n}^{v}b_k\sin kx\right|\leq\left|\sum_{k\geq n}b_k\sin kx\right|+\left|\sum_{k\geq v+1}b_k\sin kx\right|\leq 2\pi C_1+4C_1=C. $$
+
+\end{proof}
+
+
+
+
+\begin{theorem}\label{t1}
+
+Пусть $p\geq1$ и $k_j:=v_j-n_j+1$, где $n_j,\, v_j\in \N:n_j\leq
+v_j$. При $q\in(1-p,1)$ интеграл $\int_0^\pi \frac 1 {x^q}U^p(x) dx$
+сходится, если сходится ряд
+
+$$\sum_{j=1}^{\infty} \gamma(n_j)\,\,
+k_j^{1-\frac{1-q}{p}}\,\,\,.$$
+
+При $q=1-p$ интеграл $\int_0^\pi \frac 1 {x^q}U^p(x) dx$ сходится,
+если сходится ряд
+
+$$\sum_{j=1}^{\infty} \gamma(n_j)\ln ^{\frac1p}(k_j+1)\,\,\,.$$
+
+\end{theorem}
+
+\begin{proof}
+
+Согласно неравенству Минковского
+
+$$ \left(\int_0^\pi \frac 1 {x^q}U^p(x) dx\right)^{\frac 1 p}\leq
+\sum_{j=1}^{\infty} \left(\int_0^\pi \frac 1 {x^q}u_j^p(x)
+dx\right)^{\frac 1 p}\,\,\,.$$
+
+С помощью неравенства (\ref{f4}) леммы \ref{l1}, оценим интеграл
+$\int_0^\pi \frac 1 {x^q}u_j^p(x) dx$. Получим
+
+$$\int_0^\pi \frac 1 {x^q}u_j^p(x)
+dx\leq \int_0^\pi \frac 1 {x^q}\left(
+5\gamma(n_j)\min\left\{\frac{1}{x};k_j\right\} \right)^p dx =
+5^p\gamma^p(n_j)\left[k_j^p\int_0^{\frac{1}{k_j}} \frac 1
+{x^q}dx+\int_{\frac{1}{k_j}}^\pi \frac 1 {x^{p+q}}dx\right]\,\,.$$
+
+При $q\in (1-p,1)$ получим
+
+$$ \int_0^\pi \frac 1 {x^q}u_j^p(x)
+dx\leq
+5^p\gamma^p(n_j)\left[k_j^p\frac{x^{1-q}}{1-q}\bigg|_{0}^{\frac{1}{k_j}}+
+\frac{x^{1-p-q}}{1-p-q}\bigg|_{\frac{1}{k_j}}^\pi \right]=$$
+
+
+$$=5^p\gamma^p(n_j)\left[k_j^{p+q-1}\frac{1}{1-q}+
+\frac{\pi^{1-p-q}}{1-p-q}-k_j^{p+q-1}\frac{1}{1-p-q} \right]\leq$$
+
+
+$$\leq5^p\,\gamma^p(n_j)\,\, k_j^{p+q-1}\left[\frac{1}{1-q}+
+\frac{\pi^{1-p-q}}{1-p-q}-\frac{1}{1-p-q}
+\right]=C(p,q)\,\,\gamma^p(n_j)\,\, k_j^{p+q-1}\,\,\,,$$
+
+где множитель $C(p,q)$ зависит только от p и q. Следовательно,
+
+$$\left(\int_0^\pi \frac 1 {x^q}U^p(x) dx\right)^{\frac 1 p}\leq
+\sum_{j=1}^{\infty} \left(C(p,q)\,\,\gamma^p(n_j)\,\,
+k_j^{p+q-1}\right)^{\frac 1 p}= C^{\frac 1
+p}(p,q)\sum_{j=1}^{\infty} \gamma(n_j)\,\,
+k_j^{1-\frac{1-q}{p}}\,\,\,.$$
+
+В случае $q=1-p$ получим
+
+$$\int_0^\pi \frac 1 {x^q}u_j^p(x)
+dx\leq
+5^p\gamma^p(n_j)\left[k_j^p\frac{x^p}{p}\bigg|_{0}^{\frac{1}{k_j}}+
+\ln x\bigg|_{\frac{1}{k_j}}^\pi\right]
+=5^p\gamma^p(n_j)\left[\frac{1}{p}+ \ln \pi+ \ln k_j\right]\leq
+C(p)\gamma^p(n_j)\ln (k_j+1)\,\,,$$
+
+а значит,
+
+$$\left(\int_0^\pi \frac 1 {x^q}U^p(x) dx\right)^{\frac 1 p}\leq
+\sum_{j=1}^{\infty} \left(C(p)\gamma^p(n_j)\ln (k_j+1)
+\right)^{\frac 1 p}=C^{\frac 1 p}(p)\gamma(n_j)\ln^{\frac 1 p}
+(k_j+1)\,\,\,.$$
+
+\end{proof}
+
+
+
+\begin{theorem}\label{t2}
+
+Пусть $p\in(0;1)$ и $k_j:=v_j-n_j+1$, где $n_j,\, v_j\in \N:n_j\leq
+v_j$. При $q\in(1-p,1)$ интеграл $\int_0^\pi \frac 1 {x^q}U^p(x) dx$
+сходится, если сходится ряд
+
+$$\sum_{j=1}^{\infty} \gamma^p(n_j)\,\,
+k_j^{p+q-1}\,\,\,.$$
+
+При $q=1-p$ интеграл $\int_0^\pi \frac 1 {x^q}U^p(x) dx$ сходится,
+если сходится ряд
+
+$$\sum_{j=1}^{\infty} \gamma^p(n_j)\ln (k_j+1)\,\,\,.$$
+
+\end{theorem}
+
+\begin{proof}
+
+Воспользуемся неравенством:
+
+$$ \int_0^\pi \frac 1 {x^q}U^p(x) dx\leq
+\sum_{j=1}^{\infty} \int_0^\pi \frac 1 {x^q}u_j^p(x) dx\,\,\,.$$
+
+Аналогично доказательтву теоремы \ref{t1} оценим интеграл
+$\int_0^\pi \frac 1 {x^q}u_j^p(x) dx$.
+
+При $q\in (1-p,1)$ получим
+
+$$\int_0^\pi \frac 1 {x^q}U^p(x) dx\leq
+ C(p,q)\sum_{j=1}^{\infty} \gamma(n_j)\,\,
+k_j^{1-\frac{1-q}{p}}\,\,\,.$$
+
+где множитель $C(p,q)$ зависит только от p и q. Следовательно,
+
+В случае $q=1-p$ получим
+
+$$\left(\int_0^\pi \frac 1 {x^q}U^p(x) dx\right)^{\frac 1 p}\leq
+\sum_{j=1}^{\infty} \left(C(p)\gamma^p(n_j)\ln (k_j+1)
+\right)^{\frac 1 p}=C^{\frac 1 p}(p)\gamma(n_j)\ln^{\frac 1 p}
+(k_j+1)\,\,\,.$$
+
+
+\end{proof}
+
+
+\begin{example}
+
+Пусть
+$f(x):=x+(x+2)^\alpha\ln^\beta(x+2)\ln^\gamma(\ln(x+2)),\,\,\alpha>0,\,\beta\geq0,\,\gamma\geq0$
+при $x\geq1.$ Обозначим
+$n_j:=[f(j)];\,\,v_j:=n_{j+1}-1,\,\,j\in\mathbb{N}.$ Для $n_j$ и
+$v_j$ выполяются условия теоремы 1 и  $k_j:=v_j-n_j+1=n_{j+1}-n_j.$
+
+Рассмотрим случай $\alpha>1,$ тогда при $p\geq1$ и $q\in (1-p;1)$
+интеграл $\int_0^\pi \frac 1 {x^q}U^p(x) dx$ сходится, если сходится
+ряд $\sum_{j=1}^{\infty} \gamma(n_j)\,\, k_j^{1-\frac{1-q}p}\,\,\,.$
+
+Положим $\gamma(n_j):=\frac1{n_j^\mu}$ при $\mu\in(0;1)\,.$
+Исследуем на сходимость ряд $\sum_{j=1}^{\infty} \frac
+{k_j^{1-\frac{1-q}p}}{n_j^\mu}\,\,\,.$
+
+Т.к. $k_j\sim \alpha j^{\alpha-1}\ln^\beta j\ln^\gamma (\ln j)$ при
+$j\rightarrow\infty\,.$ Тогда
+
+$$\frac
+{k_j^{1-\frac{1-q}p}}{n_j^\mu}\sim \frac{\alpha^{1-\frac{1-q}p}}
+{j^{\alpha(\frac{1-q}p+\mu-1)-\frac{1-q}p+1}\cdot\ln^{\beta(\mu-1+\frac{1-q}p)}
+j\cdot\ln^{\gamma(\mu-1+\frac{1-q}p)} (\ln j)}\,\,.
+$$
+
+Полученный эквивалентный ряд сходится, если
+$\alpha(\frac{1-q}p+\mu-1)-\frac{1-q}p>0\,.$ Т.к. $\alpha>1$ и
+$\frac{1-q}p\in(0;1)\,,$ то $\frac{1-q}p+\mu-1>0\,.$ Следовательно,
+$1-p<q<1-p(1-\mu)<1\,.$ Что доказывает существование такого $q$, что
+ряд $\sum_{j=1}^{\infty} \gamma(n_j)\,\, k_j^{1-\frac{1-q}p}$
+сходится при $\gamma(n_j):=\frac1{n_j^\mu},\,\,\,\mu\in(0;1)\,.$
+
+\end{example}
+
+\center\textbf{Список литературы}
+
+\begin{enumerate}
+
+
+    \bibitem{Tel}  Теляковский С. А. Добавление к работе В. П. Заставного "Оценки сумм из модулей блоков тригонометрических рядов Фурье"
+     // Тр. Ин-та математики и механики УрО РАН. 2015. Т. 21, № 4. с.
+     277-281.
+
+ \bibitem{Edv}  Эдвардс Р. Ряды Фурье в современном изложении /Р. Эдвардс. -- М: Мир, 1985. - Т.
+ 1, с. 133-141.
+
+
+
+
+\end{enumerate}
+
+
+\end{document}
